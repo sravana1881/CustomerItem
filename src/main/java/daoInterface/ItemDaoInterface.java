@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ItemDaoInterface {
     List<Item> getAllItems();
-    void saveItem(List<Item> itemList);
+    void addItem(Item i);
     boolean updateItem(Item item,int id);
-    boolean deleteItem(int id);
+    boolean removeItemById(int id);
 }

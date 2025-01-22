@@ -59,10 +59,10 @@ public class CustomerDaoImpl extends connectionDB implements CustomerDaoInterfac
     }
 
     @Override
-    public void saveCustomer(List<Customer> customerList) {
+    public void addCustomer(Customer c) {
         try {
             Connection connection = connectionDB.getConnection();
-            for (Customer c : customerList) {
+            //for (Customer customer : c) {
                 String sqlQuery = "INSERT INTO customer (email, fname,lname) Values (?,?,?)";
                 PreparedStatement prepStmt = connection.prepareStatement(sqlQuery);
                 prepStmt.setString(1, c.getEmail());
@@ -70,7 +70,7 @@ public class CustomerDaoImpl extends connectionDB implements CustomerDaoInterfac
                 prepStmt.setString(3, c.getLname());
                 int affectedRows = prepStmt.executeUpdate();
                 System.out.println(affectedRows + " row(s) affected .");
-            }
+            //}
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -98,7 +98,7 @@ public class CustomerDaoImpl extends connectionDB implements CustomerDaoInterfac
     }
 
     @Override
-    public boolean deleteCustomer(int id) {
+    public boolean removeCustomerById(int id) {
         try {
             Connection connection = connectionDB.getConnection();
             PreparedStatement ps = connection.prepareStatement("DELETE FROM customer WHERE id=?");

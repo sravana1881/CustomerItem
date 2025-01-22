@@ -40,17 +40,17 @@ public class ItemDaoImpl extends connectionDB  implements ItemDaoInterface {
     }
 
     @Override
-    public void saveItem(List<Item> itemList) {
+    public void addItem(Item i) {
         try{
             Connection connection = connectionDB.getConnection();
-            for(Item i: itemList){
+           // for(Item i: itemList){
                 String sqlQuery = "INSERT INTO item (name, price) Values (?,?)";
                 PreparedStatement prepStmt = connection.prepareStatement(sqlQuery);
                 prepStmt.setString(1, i.getName());
                 prepStmt.setDouble(2, i.getPrice());
                 int affectedRows = prepStmt.executeUpdate();
                 System.out.println(affectedRows + " row(s) affected .");
-            }
+            //}
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -78,7 +78,7 @@ public class ItemDaoImpl extends connectionDB  implements ItemDaoInterface {
     }
 
     @Override
-    public boolean deleteItem(int id) {
+    public boolean removeItemById(int id) {
         try{
             Connection connection = connectionDB.getConnection();
             PreparedStatement ps = connection.prepareStatement("DELETE FROM item WHERE id=?");

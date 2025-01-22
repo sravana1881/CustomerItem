@@ -10,14 +10,16 @@ public class Main {
         CustomerService service = new CustomerService();
           service.getAllCustomers();
           service.getCustomerById();
-          service.saveCustomer();
+          service.addCustomer();
           service.updateCustomer();
-          service.deleteCustomer();
+          service.removeCustomerById();
+
+          System.out.println("============================================");
 
         ItemService itemService = new ItemService();
           itemService.getAllItems();
-          itemService.saveItem();
+          itemService.addItem();
           itemService.updateItem();
-          itemService.deleteItem();
+          itemService.removeItemById();
     }
 }

@@ -50,7 +50,7 @@ public void getCustomerById() {
     //return customer;
 }
 
-public void saveCustomer() {
+public void addCustomer() {
         ArrayList<Customer> customers = new ArrayList<>();
         System.out.println("Enter number of  Customers to save customer details: ");
         int numberOfCustomers= Integer.parseInt(scanner.nextLine());
@@ -68,7 +68,9 @@ public void saveCustomer() {
 
         customers.add(customer);
     }
-    customerDao.saveCustomer(customers);
+    for (Customer customer : customers) {
+        customerDao.addCustomer(customer);
+    }
     System.out.println("Customers save successfully.");
 }
 public void updateCustomer() {
@@ -84,11 +86,11 @@ public void updateCustomer() {
    updatedCustomer.setId(customerId);
     customerDao.updateCustomer(updatedCustomer,customerId);
 }
-public void deleteCustomer() {
+public void removeCustomerById() {
     System.out.println("Enter the Customer Id of the customer to delete. ");
     int customerId = Integer.parseInt(scanner.nextLine());
 
-    customerDao.deleteCustomer(customerId);
+    customerDao.removeCustomerById(customerId);
     System.out.println("Customer deleted successfully.");
 }
 }

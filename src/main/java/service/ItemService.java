@@ -23,7 +23,7 @@ public class ItemService {
         }
     }
 
-    public void saveItem() {
+    public void addItem() {
         ArrayList<Item> items = new ArrayList<>();
         System.out.println("Enter the number of items you want to save: ");
         int numberOfItems = Integer.parseInt(scanner.nextLine());
@@ -35,7 +35,10 @@ public class ItemService {
             item.setPrice(Double.parseDouble(scanner.nextLine()));
             items.add(item);
         }
-        itemDao.saveItem(items);
+        for (Item item : items) {
+            itemDao.addItem(item);
+        }
+
         System.out.println("Item added and  Saved successfully");
     }
      public void updateItem() {
@@ -50,10 +53,10 @@ public class ItemService {
         System.out.println("Item updated successfully");
      }
 
-     public void deleteItem() {
+     public void removeItemById() {
          System.out.println("Enter the Item Id of the item to delete. ");
          int ItemId = Integer.parseInt(scanner.nextLine());
-         itemDao.deleteItem(ItemId);
+         itemDao.removeItemById(ItemId);
          System.out.println("Item deleted successfully.");
      }
 }
